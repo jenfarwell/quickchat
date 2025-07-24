@@ -1,4 +1,4 @@
-# OpenAI Chat Application
+# Inference Testing Chat Application
 
 A frontend-only React application that provides a chat interface for OpenAI API endpoints.
 
