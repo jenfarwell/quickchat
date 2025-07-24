@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 const ApiConfig = ({ config, onConfigChange }) => {
   const [localConfig, setLocalConfig] = useState({
-    apiUrl: 'https://api.openai.com/v1/chat/completions',
-    apiKey: '',
-    model: 'gpt-3.5-turbo',
-    temperature: 0.7,
-    maxTokens: 1000,
-    stream: true,
-    ...config
-  });
+      apiUrl: 'http://localhost:1337/v1/chat/completions',
+      apiKey: '',
+      model: 'Blackbox:gpt-4o-mini',
+      temperature: 0.7,
+      maxTokens: 1000,
+      stream: true
+    });
 
 
   useEffect(() => {
