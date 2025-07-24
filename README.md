@@ -2,6 +2,8 @@
 
 A frontend-only React application that provides a chat interface for OpenAI API endpoints.
 
+<img width="1919" height="975" alt="Screenshot 2025-07-23 221256" src="https://github.com/user-attachments/assets/01f3fdba-8785-4dd7-ad68-4ec9823967b1" />
+
 ## Features
 
 - **API Configuration**: Configure API URL, API key, model, temperature, and max tokens
