@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Message = ({ message }) => {
+const Message = ({ message, onDelete }) => {
   const formatTimestamp = (timestamp) => {
     return new Date(timestamp).toLocaleTimeString([], {
       hour: '2-digit',
@@ -20,6 +20,15 @@ const Message = ({ message }) => {
         <div className="message-timestamp">
           {formatTimestamp(message.timestamp)}
           {message.isStreaming && <span className="streaming-indicator"> (typing...)</span>}
+          {!message.isStreaming && (
+            <button
+              className="delete-message-button"
+              onClick={onDelete}
+              title="Delete message"
+            >
+              ×
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -195,6 +195,12 @@ const ChatInterface = ({ config, messages, setMessages, isLoading, setIsLoading 
     localStorage.removeItem('chat-messages');
   };
 
+  const handleDeleteMessage = (index) => {
+    const updatedMessages = messages.filter((_, i) => i !== index);
+    setMessages(updatedMessages);
+    localStorage.setItem('chat-messages', JSON.stringify(updatedMessages));
+  };
+
   return (
     <div className="chat-container">
       <div className="header">
@@ -203,7 +209,11 @@ const ChatInterface = ({ config, messages, setMessages, isLoading, setIsLoading 
       
       <div className="messages-container">
         {messages.map((message, index) => (
-          <Message key={index} message={message} />
+          <Message
+            key={index}
+            message={message}
+            onDelete={() => handleDeleteMessage(index)}
+          />
         ))}
         
         {isLoading && <LoadingSpinner />}
