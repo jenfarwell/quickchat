@@ -1,4 +1,4 @@
-# Inference Testing Chat Application
+# QuickChat: Test Application for OpenAI API-compatible Inference Providers
 
 A frontend-only React application that provides a chat interface for OpenAI API endpoints.
 
