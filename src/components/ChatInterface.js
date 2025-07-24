@@ -198,7 +198,7 @@ const ChatInterface = ({ config, messages, setMessages, isLoading, setIsLoading 
   return (
     <div className="chat-container">
       <div className="header">
-        <h1>OpenAI Chat</h1>
+        <h1>Inference Test Chat</h1>
       </div>
       
       <div className="messages-container">

@@ -4,9 +4,9 @@ import ChatInterface from './components/ChatInterface';
 
 function App() {
   const [config, setConfig] = useState({
-    apiUrl: 'https://api.openai.com/v1/chat/completions',
+    apiUrl: 'http://localhost:1337/v1/chat/completions',
     apiKey: '',
-    model: 'gpt-3.5-turbo',
+    model: 'Blackbox:gpt-4o-mini',
     temperature: 0.7,
     maxTokens: 1000,
     stream: true
