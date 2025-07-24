@@ -11,15 +11,6 @@ const ApiConfig = ({ config, onConfigChange }) => {
     ...config
   });
 
-  const models = [
-    'gpt-3.5-turbo',
-    'gpt-3.5-turbo-16k',
-    'gpt-4',
-    'gpt-4-32k',
-    'gpt-4-turbo',
-    'gpt-4o',
-    'gpt-4o-mini'
-  ];
 
   useEffect(() => {
     const savedConfig = localStorage.getItem('openai-config');
@@ -32,17 +23,40 @@ const ApiConfig = ({ config, onConfigChange }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const newValue = name === 'temperature' ? parseFloat(value) : 
-                     name === 'maxTokens' ? parseInt(value) : value;
+    let newValue;
+    
+    if (name === 'temperature') {
+      newValue = parseFloat(value);
+    } else if (name === 'maxTokens') {
+      newValue = parseInt(value);
+    } else if (name === 'model') {
+      // Trim whitespace and ensure model name is not empty
+      newValue = value.trim();
+      console.log(`[DEBUG] Model name changed to: "${newValue}"`);
+    } else {
+      newValue = value;
+    }
     
     setLocalConfig(prev => ({ ...prev, [name]: newValue }));
   };
 
   const handleSave = () => {
+    // Validate required fields
+    if (!localConfig.model || localConfig.model.trim() === '') {
+      alert('Please enter a model name');
+      return;
+    }
+    
+    if (!localConfig.apiKey || localConfig.apiKey.trim() === '') {
+      alert('Please enter an API key');
+      return;
+    }
+    
     const configToSave = { ...localConfig };
     delete configToSave.apiKey; // Don't save API key to localStorage
     localStorage.setItem('openai-config', JSON.stringify(configToSave));
     onConfigChange(localConfig);
+    console.log(`[DEBUG] Configuration saved with model: "${localConfig.model}"`);
     alert('Configuration saved!');
   };
 
@@ -76,16 +90,14 @@ const ApiConfig = ({ config, onConfigChange }) => {
 
       <div className="form-group">
         <label htmlFor="model">Model:</label>
-        <select
+        <input
+          type="text"
           id="model"
           name="model"
           value={localConfig.model}
           onChange={handleChange}
-        >
-          {models.map(model => (
-            <option key={model} value={model}>{model}</option>
-          ))}
-        </select>
+          placeholder="Enter model name (e.g., gpt-3.5-turbo, gpt-4, claude-3-sonnet)"
+        />
       </div>
 
       <div className="form-group">
