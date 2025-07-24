@@ -96,6 +96,33 @@ body {
   margin-top: 5px;
 }
 
+.message-text {
+  position: relative;
+}
+
+.typing-indicator {
+  display: inline-block;
+  animation: blink 1s infinite;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.streaming-indicator {
+  font-style: italic;
+  color: #666;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 8px;
+  width: auto;
+  transform: scale(1.2);
+}
+
 .input-container {
   padding: 20px;
   background-color: white;

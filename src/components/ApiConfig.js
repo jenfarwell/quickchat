@@ -7,6 +7,7 @@ const ApiConfig = ({ config, onConfigChange }) => {
     model: 'gpt-3.5-turbo',
     temperature: 0.7,
     maxTokens: 1000,
+    stream: true,
     ...config
   });
 
@@ -117,6 +118,19 @@ const ApiConfig = ({ config, onConfigChange }) => {
           value={localConfig.maxTokens}
           onChange={handleChange}
         />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="stream">
+          <input
+            type="checkbox"
+            id="stream"
+            name="stream"
+            checked={localConfig.stream}
+            onChange={(e) => setLocalConfig(prev => ({ ...prev, stream: e.target.checked }))}
+          />
+          Enable Streaming
+        </label>
       </div>
 
       <button className="save-config-button" onClick={handleSave}>

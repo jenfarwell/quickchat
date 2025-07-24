@@ -8,7 +8,8 @@ function App() {
     apiKey: '',
     model: 'gpt-3.5-turbo',
     temperature: 0.7,
-    maxTokens: 1000
+    maxTokens: 1000,
+    stream: true
   });
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
